@@ -1,6 +1,6 @@
-using DesignPatternChallenge.Models;
+using BuilderChallenge.Models;
 
-namespace DesignPatternChallenge.Builders;
+namespace BuilderChallenge.Builders;
 
 public class SalesReportBuilder : IReportBuilder
 {
@@ -52,6 +52,11 @@ public class SalesReportBuilder : IReportBuilder
     public IReportBuilder WithColumns(string column)
     {
         _report.Columns.Add(column);
+        return this;
+    }
+    public IReportBuilder WithColumns(IEnumerable<string> columns)
+    {
+        _report.Columns.AddRange(columns);
         return this;
     }
     public IReportBuilder WithFilters(string filter)

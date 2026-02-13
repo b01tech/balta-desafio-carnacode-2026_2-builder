@@ -1,39 +1,42 @@
-namespace DesignPatternChallenge.Models;
+namespace BuilderChallenge.Models;
 
 public class SalesReport : IReport
 {
-    internal SalesReport() { }
+    public SalesReport() 
+    {
+        EndDate = StartDate.AddMonths(1);
+    }
 
     // obrigatórios
     public string Title { get; internal set; } = "Relatório de Vendas";
     public string Format { get; internal set; } = "PDF";
     public DateTime StartDate { get; internal set; } = DateTime.Now;
-    public DateTime EndDate { get; internal set; } = StartDate.AddMonths(1);
+    public DateTime EndDate { get; internal set; }
 
     // header e footer
     public bool IncludeHeader { get; internal set; }
     public bool IncludeFooter { get; internal set; }
-    public string HeaderText { get; internal set; }
-    public string FooterText { get; internal set; }
+    public string HeaderText { get; internal set; } = string.Empty;
+    public string FooterText { get; internal set; } = string.Empty;
 
     // gráficos e resumo
     public bool IncludeCharts { get; internal set; }
-    public string ChartType { get; internal set; }
+    public string ChartType { get; internal set; } = string.Empty;
     public bool IncludeSummary { get; internal set; }
 
     // configurações de exibição
     public List<string> Columns { get; internal set; } = new();
     public List<string> Filters { get; internal set; } = new();
-    public string SortBy { get; internal set; }
-    public string GroupBy { get; internal set; }
+    public string SortBy { get; internal set; } = string.Empty;
+    public string GroupBy { get; internal set; } = string.Empty;
     public bool IncludeTotals { get; internal set; }
-    public string Orientation { get; internal set; }
-    public string PageSize { get; internal set; }
+    public string Orientation { get; internal set; } = string.Empty;
+    public string PageSize { get; internal set; } = string.Empty;
     public bool IncludePageNumbers { get; internal set; }
 
     // configurações 
-    public string CompanyLogo { get; internal set; }
-    public string WaterMark { get; internal set; }
+    public string CompanyLogo { get; internal set; } = string.Empty;
+    public string WaterMark { get; internal set; } = string.Empty;
     public void Generate()
     {
         Console.WriteLine($"\n=== Gerando Relatório: {Title} ===");

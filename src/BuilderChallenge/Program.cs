@@ -1,8 +1,8 @@
-// Solução: Usando Builder para criar relatórios customizados
-using DesignPatternChallenge.Builders;
-using DesignPatternChallenge.Models;
+﻿// Solução: Usando Builder para criar relatórios customizados
 
-namespace DesignPatternChallenge;
+using BuilderChallenge.Builders;
+
+namespace BuilderChallenge;
 
 class Program
 {
